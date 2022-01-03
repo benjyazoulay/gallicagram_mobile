@@ -41,7 +41,7 @@ shinyUI(fluidPage(
               "),
   mobileDetect('isMobile'),
   dashboardPage(skin="black",
-    dashboardHeader(title=span(img(src = "Logo1.png", height = 35), ""),
+    dashboardHeader(title=span(img(src = "Logo1.png", height = 100), ""),
                     titleWidth = 350
                     # ,dropdownMenu(type="notifications",icon=icon("align-justify"),badgeStatus = NULL,headerText = "",
                     #              notificationItem(
