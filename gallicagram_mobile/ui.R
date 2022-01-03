@@ -41,15 +41,15 @@ shinyUI(fluidPage(
               "),
   mobileDetect('isMobile'),
   dashboardPage(skin="black",
-    dashboardHeader(title=span(img(src = "Logo1.png", height = 100), ""),
-                    titleWidth = 350
+    dashboardHeader(title="Gallicagram",
+                    titleWidth = 400
                     # ,dropdownMenu(type="notifications",icon=icon("align-justify"),badgeStatus = NULL,headerText = "",
                     #              notificationItem(
                     #                text = ""
                     #              )
                     # )
                     ),
-    dashboardSidebar(width = 350,
+    dashboardSidebar(width = 400,
       div(style="display: inline-block;vertical-align:bottom;width: 78%;",textInput("mot","Recherche","Joffre&Pétain&Foch")),
       div(style="display: inline-block;vertical-align:bottom;width: 20%;",
           conditionalPanel(condition="input.cooccurrences==1 && (input.doc_type == 1 || input.doc_type == 2 || input.doc_type == 3) && input.search_mode ==1",numericInput("prox","Distance",20))
