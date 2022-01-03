@@ -183,7 +183,7 @@ Plot <- function(data,input){
       y <- list(title = "Nombre d'occurrences dans\nle corpus",titlefont = 41)
       plot = plot_ly(tableau, x=~date,y=~count,text=~hovers,color =~mot,type='bar', hoverinfo="text",customdata=tableau$url,colors=customPalette)}
     plot = layout(plot, yaxis = y, xaxis = x,title = Title)
-    if(length(grep(",",data$mot))==0){plot = layout(plot,showlegend=TRUE,legend = list(x = 100, y = -0.1))}
+    if(length(grep(",",data$mot))==0){plot = layout(plot,showlegend=TRUE,legend = list(orientation = 'h',y=-0.1))}
     
     if(input$delta==TRUE){
       if(data[["resolution"]]=="Mois"){tableau$hovers2 = str_c(str_extract(tableau$date,".......")," : delta = ",round(tableau$loess*100,digits=2),"%")}
