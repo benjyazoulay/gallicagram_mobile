@@ -2578,6 +2578,9 @@ shinyServer(function(input, output,session){
     print(input$isMobile)
     if(input$isMobile==T){addClass(selector = "body", class = "sidebar-collapse")}
   })
+  observeEvent(input$do,{observeEvent(input$isMobile,{
+    if(input$isMobile==T){addClass(selector = "body", class = "sidebar-collapse")}
+  })})
   
   # shinyURL.server(session)
   
