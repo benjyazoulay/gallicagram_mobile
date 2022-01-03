@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     libgdal-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# system library dependency for the gallicagram app
+# system library dependency for the gallicagram_mobile app
 RUN apt-get update && apt-get install -y \
     libmpfr-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -74,11 +74,11 @@ RUN R -e "install.packages(c('shinyjs'), repos='https://cloud.r-project.org/')"
 RUN R -e "install.packages(c('shinydashboard'), repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/gallicagram
-COPY gallicagram /root/gallicagram
+RUN mkdir /root/gallicagram_mobile
+COPY gallicagram_mobile /root/gallicagram_mobile
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/root/gallicagram')"]
+CMD ["R", "-e", "shiny::runApp('/root/gallicagram_mobile')"]
