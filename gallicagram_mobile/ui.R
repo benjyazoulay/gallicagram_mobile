@@ -32,6 +32,13 @@ mobileDetect <- function(inputId, value = 0) {
 shinyUI(fluidPage(
   tags$head(includeHTML(("google-analytics.html"))),
   tags$head(includeHTML(("google-search.html"))),
+  tags$style("
+              body {
+    -moz-transform: scale(2, 2); /* Moz-browsers */
+    zoom: 2; /* Other non-webkit browsers */
+    zoom: 200%; /* Webkit browsers */
+}
+              "),
   mobileDetect('isMobile'),
   dashboardPage(skin="black",
     dashboardHeader(title=span(img(src = "Logo1.png", height = 35), ""),
