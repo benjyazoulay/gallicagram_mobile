@@ -41,8 +41,8 @@ shinyUI(fluidPage(
               "),
   mobileDetect('isMobile'),
   dashboardPage(skin="black",
-    dashboardHeader(title="Gallicagram",
-                    titleWidth = 400
+    dashboardHeader(title=span(img(src = "Logo1.png", height = 35), ""),
+                    titleWidth = 150
                     # ,dropdownMenu(type="notifications",icon=icon("align-justify"),badgeStatus = NULL,headerText = "",
                     #              notificationItem(
                     #                text = ""
