@@ -28,18 +28,24 @@ mobileDetect <- function(inputId, value = 0) {
   )
 }
 
-shinyUI(fixedPage(
+shinyUI(fluidPage(
   tags$head(includeHTML(("google-analytics.html"))),
   tags$head(includeHTML(("google-search.html"))),
-  tags$style("
-              body {
-    -moz-transform: scale(2, 2); /* Moz-browsers */
-    zoom: 2; /* Other non-webkit browsers */
-    zoom: 200%; /* Webkit browsers */
-}
-              "),
+  tags$head(tags$style(HTML('
+                         .content-wrapper,
+                        .right-side {
+                          background-color: #ffffff;
+                          height: 1200px;
+                         }
+
+                body{ 
+                -moz-transform: scale(2, 2); /* Moz-browsers */
+                zoom: 2; /* Other non-webkit browsers */
+                 zoom: 200%; /* Webkit browsers */
+                }
+                          '))),
   mobileDetect('isMobile'),
-  fixedPage(
+  fluidPage(
     useShinyjs(),
     div(rclipboardSetup(),
         div(style="display: inline-block;vertical-align:top",actionButton("showSidebar", "",icon = icon("bars"))),
