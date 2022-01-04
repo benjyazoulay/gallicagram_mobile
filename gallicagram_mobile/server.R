@@ -2576,8 +2576,8 @@ options(shiny.maxRequestSize = 100*1024^2)
 shinyServer(function(input, output,session){
   observeEvent(input$isMobile,{
     print(input$isMobile)
-    if(input$isMobile){shinyjs::hide(id = "Sidebar")}
   })
+  shinyjs::hide(id = "Sidebar")
   observeEvent(input$showSidebar, {
     shinyjs::toggle(id = "Sidebar")
   })
