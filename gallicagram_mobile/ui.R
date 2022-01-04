@@ -42,8 +42,9 @@ shinyUI(fluidPage(
   fluidPage(
     useShinyjs(),
     div(rclipboardSetup(),
-        div(style="display: inline-block;vertical-align:top",actionButton("showSidebar", "",icon = icon("bars"))),
-           div(style="display: inline-block;vertical-align:top",dropdownButton(tags$h3("Options avancées"),
+        p(""),
+        div(style="display: inline-block;vertical-align:bottom",actionButton("showSidebar", "",icon = icon("bars"))),
+           div(style="display: inline-block;vertical-align:bottom",dropdownButton(tags$h3("Options avancées"),
                                                                                   checkboxInput("barplot", "Distribution des documents de la base de données ", value = FALSE),
                                                                                   div(style = "margin-top: -15px"),
                                                                                   checkboxInput("correlation_test", "Matrices de corrélation", value = FALSE),
@@ -70,10 +71,10 @@ shinyUI(fluidPage(
                                                                                   icon = icon("sliders"), width = "300px",
                                                                                   tooltip = tooltipOptions(title = "Afficher les options avancées")
            )),
-           div(style="display: inline-block;vertical-align:top;float:right",actionButton("twitter",label = img (src="twitter.png", width="15", height="15"),onclick ="window.open('https://twitter.com/gallicagram', '_blank')")),
-           div(style="display: inline-block;vertical-align:top;float:right",actionButton("fb",label = img (src="facebook.png", width="15", height="15"),onclick ="window.open('https://www.facebook.com/gallicagram', '_blank')")),
-           div(style="display: inline-block;vertical-align:top;float:right",rclipButton("clipbtn", "Citation",clipText = "Azoulay, B., & de Courson, B. (2021, December 8). Gallicagram : un outil de lexicométrie pour la recherche. https://doi.org/10.31235/osf.io/84bf3",icon = icon("clipboard"))),
-           div(style="display: inline-block;vertical-align:top;float:right",actionButton("link", "Article de recherche",onclick ="window.open('https://osf.io/preprints/socarxiv/84bf3/', '_blank')")),
+           div(style="display: inline-block;vertical-align:bottom;float:right",actionButton("twitter",label = img (src="twitter.png", width="15", height="15"),onclick ="window.open('https://twitter.com/gallicagram', '_blank')")),
+           div(style="display: inline-block;vertical-align:bottom;float:right",actionButton("fb",label = img (src="facebook.png", width="15", height="15"),onclick ="window.open('https://www.facebook.com/gallicagram', '_blank')")),
+           div(style="display: inline-block;vertical-align:bottom;float:right",rclipButton("clipbtn", "Citation",clipText = "Azoulay, B., & de Courson, B. (2021, December 8). Gallicagram : un outil de lexicométrie pour la recherche. https://doi.org/10.31235/osf.io/84bf3",icon = icon("clipboard"))),
+           div(style="display: inline-block;vertical-align:bottom;float:right",actionButton("link", "Article de recherche",onclick ="window.open('https://osf.io/preprints/socarxiv/84bf3/', '_blank')")),
     ),
     div(id ="Sidebar",wellPanel(
       div(style="display: inline-block;vertical-align:bottom;width: 78%;",textInput("mot","Recherche","Joffre&Pétain&Foch")),
