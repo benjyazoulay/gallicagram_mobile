@@ -73,6 +73,8 @@ RUN R -e "install.packages(c('shinyjs'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "install.packages(c('shinydashboard'), repos='https://cloud.r-project.org/')"
 
+RUN R -e "install.packages(c('bs4Dash'), repos='https://cloud.r-project.org/')"
+
 # copy the app to the image
 RUN mkdir /root/gallicagram_mobile
 COPY gallicagram_mobile /root/gallicagram_mobile
