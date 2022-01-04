@@ -18,6 +18,7 @@ library(leaflet)
 #library(shinyURL)
 library(shinyjs)
 library(shinydashboard)
+library(bs4Dash)
 
 
 mobileDetect <- function(inputId, value = 0) {
@@ -32,24 +33,24 @@ mobileDetect <- function(inputId, value = 0) {
 shinyUI(fluidPage(
   tags$head(includeHTML(("google-analytics.html"))),
   tags$head(includeHTML(("google-search.html"))),
-  tags$style("
-              body {
-    -moz-transform: scale(2, 2); /* Moz-browsers */
-    zoom: 2; /* Other non-webkit browsers */
-    zoom: 200%; /* Webkit browsers */
-}
-              "),
+#   tags$style("
+#               body {
+#     -moz-transform: scale(2, 2); /* Moz-browsers */
+#     zoom: 2; /* Other non-webkit browsers */
+#     zoom: 200%; /* Webkit browsers */
+# }
+#               "),
   mobileDetect('isMobile'),
-  dashboardPage(skin="black",
-    dashboardHeader(title=span(img(src = "Logo1.png", height = 35), ""),
-                    titleWidth = 150
+  dashboardPage(
+                bs4DashNavbar(title=span(img(src = "Logo1.png", height = 35), ""),
+                    fixed = T
                     # ,dropdownMenu(type="notifications",icon=icon("align-justify"),badgeStatus = NULL,headerText = "",
                     #              notificationItem(
                     #                text = ""
                     #              )
                     # )
                     ),
-    dashboardSidebar(width = 400,
+    bs4DashSidebar(width = "400px",skin="light",minified = F,
       div(style="display: inline-block;vertical-align:bottom;width: 78%;",textInput("mot","Recherche","Joffre&Pétain&Foch")),
       div(style="display: inline-block;vertical-align:bottom;width: 20%;",
           conditionalPanel(condition="input.cooccurrences==1 && (input.doc_type == 1 || input.doc_type == 2 || input.doc_type == 3) && input.search_mode ==1",numericInput("prox","Distance",20))
@@ -108,7 +109,7 @@ shinyUI(fluidPage(
       
     ),
     dashboardBody(useShinyjs(),
-      box(width = 12,rclipboardSetup(),
+      box(collapsible = F,width = 12,rclipboardSetup(),
           div(style="display: inline-block;vertical-align:bottom",dropdownButton(tags$h3("Options avancées"),
                                                                                  checkboxInput("barplot", "Distribution des documents de la base de données ", value = FALSE),
                                                                                  div(style = "margin-top: -15px"),
@@ -141,7 +142,7 @@ shinyUI(fluidPage(
           div(style="display: inline-block;vertical-align:top;float:right",actionButton("link", "Article de recherche",onclick ="window.open('https://osf.io/preprints/socarxiv/84bf3/', '_blank')")),
           plotlyOutput("plot")
           ),
-      box(conditionalPanel(condition="(input.doc_type==1 || input.doc_type==2) && input.search_mode == 3 && input.joker == 1",switchInput(inputId = "histoJoker",size = "mini",label = "Dynamique",value=F)),
+      fluidRow(box(collapsible = F,conditionalPanel(condition="(input.doc_type==1 || input.doc_type==2) && input.search_mode == 3 && input.joker == 1",switchInput(inputId = "histoJoker",size = "mini",label = "Dynamique",value=F)),
           sliderInput("span","Lissage de la courbe",min = 0,max = 10,value = 0),
           p(""),
           div(style="display: inline-block;vertical-align:bottom",downloadButton('downloadData', 'Données')),
@@ -149,15 +150,15 @@ shinyUI(fluidPage(
           div(style="display: inline-block;vertical-align:bottom",downloadButton('downloadSPlot', 'Graphique scientifique')),
           h6(textOutput("currentTime"), style="color:white")
           ),
-      box(
+      box(collapsible = F,
         uiOutput("legende"),
         textOutput("legende0"),
         textOutput("legende1"),
         textOutput("legende4"),
         textOutput("legende3"),
         textOutput("legende2")
-      ),
-      conditionalPanel(condition="input.correlation_test",box(
+      )),
+      conditionalPanel(condition="input.correlation_test",box(collapsible = F,
                        conditionalPanel(condition="input.correlation_test",tableOutput("corr")),
                        conditionalPanel(condition="input.correlation_test",tableOutput("corr2")),
                        conditionalPanel(condition="input.correlation_test",textOutput("pvalue"))
