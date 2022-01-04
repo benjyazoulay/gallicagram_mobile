@@ -2581,6 +2581,9 @@ shinyServer(function(input, output,session){
   observeEvent(input$showSidebar, {
     shinyjs::toggle(id = "Sidebar")
   })
+  observeEvent(input$do, {
+    shinyjs::hide(id = "Sidebar")
+  })
   
   # shinyURL.server(session)
   
