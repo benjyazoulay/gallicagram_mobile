@@ -33,23 +33,17 @@ mobileDetect <- function(inputId, value = 0) {
 shinyUI(fluidPage(
   tags$head(includeHTML(("google-analytics.html"))),
   tags$head(includeHTML(("google-search.html"))),
-#   tags$style("
-#               body {
-#     -moz-transform: scale(2, 2); /* Moz-browsers */
-#     zoom: 2; /* Other non-webkit browsers */
-#     zoom: 200%; /* Webkit browsers */
-# }
-#               "),
+  tags$style("
+              body {
+    -moz-transform: scale(2, 2); /* Moz-browsers */
+    zoom: 2; /* Other non-webkit browsers */
+    zoom: 200%; /* Webkit browsers */
+}
+              "),
   mobileDetect('isMobile'),
   dashboardPage(
                 bs4DashNavbar(title=span(img(src = "Logo1.png", height = 35), ""),
-                    fixed = T
-                    # ,dropdownMenu(type="notifications",icon=icon("align-justify"),badgeStatus = NULL,headerText = "",
-                    #              notificationItem(
-                    #                text = ""
-                    #              )
-                    # )
-                    ),
+                    fixed = T),
     bs4DashSidebar(width = "400px",skin="light",minified = F,
       div(style="display: inline-block;vertical-align:bottom;width: 78%;",textInput("mot","Recherche","Joffre&Pétain&Foch")),
       div(style="display: inline-block;vertical-align:bottom;width: 20%;",
