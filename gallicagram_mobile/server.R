@@ -2581,6 +2581,11 @@ shinyServer(function(input, output,session){
   observeEvent(input$showSidebar, {
     shinyjs::toggle(id = "Sidebar")
   })
+  runjs(
+    "document.body.style.zoom = 2;
+  var elem = document.getElementsByClassName('wrapper');
+  elem[0].style.height = '125vh';"
+  )
   # shinyURL.server(session)
   
   data=list(read.csv("exemple.csv",encoding = "UTF-8"),"Joffre&Pétain&Foch","Années")
